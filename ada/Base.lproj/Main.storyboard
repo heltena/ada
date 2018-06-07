@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Recording View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="RecordingViewController" customModule="ada" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="O5y-kA-AYW">
+                                <rect key="frame" x="0.0" y="195" width="375" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06C-Tq-bfO">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                        <state key="normal" title="☹️"/>
+                                        <connections>
+                                            <action selector="onEmojiTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nBE-ch-pOR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xH3-5c-ffn">
+                                        <rect key="frame" x="125" y="0.0" width="125" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                        <state key="normal" title="😐"/>
+                                        <connections>
+                                            <action selector="onEmojiTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bdH-mo-UAV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRR-8Q-3uG">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="110"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                        <state key="normal" title="😀"/>
+                                        <connections>
+                                            <action selector="onEmojiTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FU4-Yf-bo2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="K7V-BZ-kAL"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4X-7R-5zz">
+                                <rect key="frame" x="128" y="507" width="119" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f4X-7R-5zz" secondAttribute="height" multiplier="163:192" id="1ib-ib-KWw"/>
+                                    <constraint firstAttribute="height" constant="140" id="Y6n-Jz-q2X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <state key="normal" title="♥️"/>
+                                <connections>
+                                    <action selector="onSendEmailTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s5V-Dy-g1W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAd-Ib-Psb">
+                                <rect key="frame" x="314" y="20" width="45" height="30"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="onDeleteTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1jK-pu-Kfm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="f4X-7R-5zz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FpH-9X-qbE"/>
+                            <constraint firstItem="O5y-kA-AYW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MQ8-cp-5i2"/>
+                            <constraint firstItem="O5y-kA-AYW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.75" id="QjF-TY-dqN"/>
+                            <constraint firstItem="pAd-Ib-Psb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hZs-qd-oey"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="f4X-7R-5zz" secondAttribute="bottom" constant="20" id="qTD-eU-WvD"/>
+                            <constraint firstItem="O5y-kA-AYW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tey-y8-Bzk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pAd-Ib-Psb" secondAttribute="trailing" constant="16" id="yZI-kd-FAm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outletCollection property="buttons" destination="06C-Tq-bfO" collectionClass="NSMutableArray" id="eJ5-Aj-11y"/>
+                        <outletCollection property="buttons" destination="xH3-5c-ffn" collectionClass="NSMutableArray" id="lYT-d1-dSy"/>
+                        <outletCollection property="buttons" destination="eRR-8Q-3uG" collectionClass="NSMutableArray" id="xpp-Ow-u6l"/>
+                        <outletCollection property="buttons" destination="f4X-7R-5zz" collectionClass="NSMutableArray" id="Luh-eY-MQv"/>
+                        <outletCollection property="buttons" destination="pAd-Ib-Psb" collectionClass="NSMutableArray" id="EgJ-JB-X7N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
+        </scene>
+    </scenes>
+</document>
