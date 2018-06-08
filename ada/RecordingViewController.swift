@@ -80,7 +80,7 @@ class RecordingViewController: UIViewController, CLLocationManagerDelegate, MFMa
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func save(emoji: String) {
+    private func save(emoji: String) -> Bool {
         let newEmojiRecord = EmojiRecord(context: context)
         newEmojiRecord.emoji = emoji
         newEmojiRecord.timestamp = Date()
@@ -91,14 +91,24 @@ class RecordingViewController: UIViewController, CLLocationManagerDelegate, MFMa
         } else {
             newEmojiRecord.hasLocation = false
         }
-        try? context.save()
+        do {
+            try context.save()
+            return true
+        } catch {
+            return false
+        }
     }
     
     @IBAction func onEmojiTouched(_ sender: UIButton) {
         guard let emoji = sender.titleLabel?.text else {
             return
         }
-        save(emoji: emoji)
+        let result = save(emoji: emoji)
+        if result {
+            self.show(message: "Recorded your emoji: \(emoji)")
+        } else {
+            self.show(message: "Ops! I could not record your emoji: \(emoji)")
+        }
     }
     
     @IBAction func onSendEmailTouched(_ sender: Any) {
@@ -106,12 +116,7 @@ class RecordingViewController: UIViewController, CLLocationManagerDelegate, MFMa
             self.show(message: "Cannot send emails")
             return
         }
-        
-        guard let data = file.data(using: .utf8) else {
-            self.show(message: "Cannot compose the message")
-            return
-        }
-        
+
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "EmojiRecord")
         request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
         guard
@@ -121,9 +126,14 @@ class RecordingViewController: UIViewController, CLLocationManagerDelegate, MFMa
                 self.show(message: "Cannot fetch the data")
                 return
         }
-        
+
         let lines = emojiValues.map { "\($0.timestamp!),\($0.hasLocation),\($0.lat),\($0.lon),\($0.emoji!)" }
         let file = lines.joined(separator: "\n")
+
+        guard let data = file.data(using: .utf8) else {
+            self.show(message: "Cannot compose the message")
+            return
+        }
 
         let mailComposer = MFMailComposeViewController()
         mailComposer.mailComposeDelegate = self
@@ -142,9 +152,14 @@ class RecordingViewController: UIViewController, CLLocationManagerDelegate, MFMa
         if locations.count > 0 {
             userLocation = locations[0]
             if let emojiToSave = appDelegate.emojiToSave {
-                save(emoji: emojiToSave)
+                let result = save(emoji: emojiToSave)
                 buttonsAreEnabled = true
                 appDelegate.emojiToSave = nil
+                if result {
+                    self.show(message: "Recorded your emoji: \(emojiToSave)")
+                } else {
+                    self.show(message: "Ops! I could not record your emoji: \(emojiToSave)")
+                }
             }
         }
     }
